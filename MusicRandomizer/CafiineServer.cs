@@ -84,9 +84,11 @@ namespace MusicRandomizer
             while (true)
             {
                 TcpClient client = listener.AcceptTcpClient();
-                Thread thread = new Thread(HandleClient);
-                thread.Name = "[" + index.ToString() + "]";
-                thread.IsBackground = true;
+                Thread thread = new Thread(HandleClient)
+                {
+                    Name = "[" + index.ToString() + "]",
+                    IsBackground = true
+                };
                 thread.Start(client);
                 index++;
             }
@@ -323,13 +325,14 @@ namespace MusicRandomizer
                                         }
                                         FileStream f = files[handle];
 
-                                        FSStat stat = new FSStat();
-
-                                        stat.flags = FSStatFlag.None;
-                                        stat.permission = 0x400;
-                                        stat.owner = ids[1];
-                                        stat.group = 0x101e;
-                                        stat.file_size = (uint)f.Length;
+                                        FSStat stat = new FSStat
+                                        {
+                                            flags = FSStatFlag.None,
+                                            permission = 0x400,
+                                            owner = ids[1],
+                                            group = 0x101e,
+                                            file_size = (uint)f.Length
+                                        };
 
                                         writer.Write(BYTE_SPECIAL);
                                         writer.Write(0);

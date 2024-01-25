@@ -222,9 +222,11 @@ namespace MusicRandomizer
                 File.Delete(newPath);
                 File.Copy(path, newPath);
 
-                file = new MusicFile();
-                file.path = newPath;
-                file.types = types;
+                file = new MusicFile
+                {
+                    path = newPath,
+                    types = types
+                };
 
                 mainForm.musicFiles.Add(file);
             }

@@ -27,8 +27,10 @@ namespace MusicRandomizer
                 Close();
             }
             catch (Exception) { }
-            client = new TcpClient();
-            client.NoDelay = true;
+            client = new TcpClient
+            {
+                NoDelay = true
+            };
             IAsyncResult ar = client.BeginConnect(Host, Port, null, null);
             System.Threading.WaitHandle wh = ar.AsyncWaitHandle;
             try
