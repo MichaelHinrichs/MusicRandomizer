@@ -11,7 +11,7 @@ namespace MusicRandomizer
         public SplatoonRegion region;
         public string currentPlaylist;
 
-        private static XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
+        private static readonly XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
         public static Configuration currentConfig;
 
         public static void Load()

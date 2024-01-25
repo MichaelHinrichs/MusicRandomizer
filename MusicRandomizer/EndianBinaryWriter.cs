@@ -12,7 +12,7 @@ namespace System.IO
         private delegate void ArrayReverse(byte[] array, int count);
         private static readonly ArrayReverse[] fastReverse = new ArrayReverse[] { null, null, ArrayReverse2, null, ArrayReverse4, null, null, null, ArrayReverse8 };
 
-        private static Dictionary<Type, List<Tuple<int, TypeCode>>> parserCache = new Dictionary<Type, List<Tuple<int, TypeCode>>>();
+        private static readonly Dictionary<Type, List<Tuple<int, TypeCode>>> parserCache = new Dictionary<Type, List<Tuple<int, TypeCode>>>();
 
         public Stream BaseStream { get; private set; }
         public Endianness Endianness { get; set; }

@@ -15,7 +15,7 @@ namespace MusicRandomizer
 
     class UpdateChecker
     {
-        private static XmlSerializer serializer = new XmlSerializer(typeof(UpdateInfo));
+        private static readonly XmlSerializer serializer = new XmlSerializer(typeof(UpdateInfo));
 
         public static UpdateInfo CheckForUpdate()
         {

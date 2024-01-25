@@ -5,7 +5,7 @@ namespace MusicRandomizer
     class FileTracker
     {
         public List<MusicFile> files = new List<MusicFile>();
-        private List<MusicFile> playedFiles = new List<MusicFile>();
+        private readonly List<MusicFile> playedFiles = new List<MusicFile>();
         private int playlistIndex = -1;
 
         public MusicFile getTrack(PlayMode mode)

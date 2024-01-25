@@ -14,7 +14,7 @@ namespace MusicRandomizer
         public List<MusicFile> musicFiles;
 
         private CafiineServer cafiineServer;
-        private List<FileTracker> fileTrackers = new List<FileTracker>();
+        private readonly List<FileTracker> fileTrackers = new List<FileTracker>();
         private PlayMode playMode = PlayMode.Shuffle;
         private MusicFile playNext = null;
 

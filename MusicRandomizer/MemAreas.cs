@@ -13,10 +13,10 @@ namespace MusicRandomizer
 
     public class AddressRange
     {
-        private AddressType PDesc;
-        private byte PId;
-        private uint PLow;
-        private uint PHigh;
+        private readonly AddressType PDesc;
+        private readonly byte PId;
+        private readonly uint PLow;
+        private readonly uint PHigh;
 
         public AddressType description { get { return PDesc; } }
         public byte id { get { return PId; } }

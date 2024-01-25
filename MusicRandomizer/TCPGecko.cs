@@ -241,7 +241,7 @@ namespace MusicRandomizer
 
     public class ETCPGeckoException : Exception
     {
-        private ETCPErrorCode PErrorCode;
+        private readonly ETCPErrorCode PErrorCode;
         public ETCPErrorCode ErrorCode
         {
             get
