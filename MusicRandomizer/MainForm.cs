@@ -142,7 +142,7 @@ namespace MusicRandomizer
             }
             else
             {
-                musicFile = fileTrackers[(int)trackType].getTrack(this.playMode);
+                musicFile = fileTrackers[(int)trackType].getTrack(playMode);
                 if (musicFile == null)
                 {
                     Log(LogType.NowPlaying, strippedPath);
@@ -191,7 +191,7 @@ namespace MusicRandomizer
         private void cafiineWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             MessageBox.Show("An error was encountered when starting the cafiine server. Please ensure that there are no other cafiine servers running on this computer.\n\nDetails: " + e.Result);
-            this.Close();
+            Close();
         }
 
         private void updateWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -211,7 +211,7 @@ namespace MusicRandomizer
 
                 if (result == DialogResult.Yes)
                 {
-                    this.usageToolStripMenuItem_Click(null, null);
+                    usageToolStripMenuItem_Click(null, null);
                 }
             }
             else
@@ -283,7 +283,7 @@ namespace MusicRandomizer
         {
             if (radShuffle.Checked)
             {
-                this.playMode = PlayMode.Shuffle;
+                playMode = PlayMode.Shuffle;
             }
         }
 
@@ -291,7 +291,7 @@ namespace MusicRandomizer
         {
             if (radInOrder.Checked)
             {
-                this.playMode = PlayMode.InOrder;
+                playMode = PlayMode.InOrder;
             }
         }
 
@@ -299,7 +299,7 @@ namespace MusicRandomizer
         {
             if (radTrueRandom.Checked)
             {
-                this.playMode = PlayMode.TrueRandom;
+                playMode = PlayMode.TrueRandom;
             }
         }
 
@@ -310,7 +310,7 @@ namespace MusicRandomizer
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void usageToolStripMenuItem_Click(object sender, EventArgs e)

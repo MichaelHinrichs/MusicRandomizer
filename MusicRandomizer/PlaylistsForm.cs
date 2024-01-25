@@ -41,7 +41,7 @@ namespace MusicRandomizer
                 return;
             }
 
-            MainForm mainForm = (MainForm)this.Owner;
+            MainForm mainForm = (MainForm)Owner;
             mainForm.SwitchPlaylist(playlistNameForm.name);
 
             ReloadPlaylists();
@@ -57,7 +57,7 @@ namespace MusicRandomizer
                 return;
             }
 
-            MainForm mainForm = (MainForm)this.Owner;
+            MainForm mainForm = (MainForm)Owner;
             mainForm.SwitchPlaylist(selectedPlaylist);
 
             ReloadPlaylists();

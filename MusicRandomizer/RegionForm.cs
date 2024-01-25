@@ -37,7 +37,7 @@ namespace MusicRandomizer
                 chosenRegion = SplatoonRegion.Japan;
             }
 
-            this.Close();
+            Close();
         }
     }
 }

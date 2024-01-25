@@ -214,7 +214,7 @@ namespace MusicRandomizer
                 types.Add(TrackType.NewsOutro);
             }
 
-            MainForm mainForm = (MainForm)this.Owner;
+            MainForm mainForm = (MainForm)Owner;
 
             if (file == null)
             {
@@ -237,7 +237,7 @@ namespace MusicRandomizer
 
             mainForm.RefreshPlaylist();
 
-            this.Close();
+            Close();
         }
 
         private void chkWorld_CheckedChanged(object sender, EventArgs e)

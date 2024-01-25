@@ -60,7 +60,7 @@ namespace MusicRandomizer
             }
 
             pressedSave = true;
-            this.Close();
+            Close();
         }
 
     }
