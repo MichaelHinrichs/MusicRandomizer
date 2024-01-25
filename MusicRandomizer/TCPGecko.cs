@@ -1536,7 +1536,7 @@ namespace MusicRandomizer
             //Make sure the stream ends with F0/F1
             cheatStream.Seek(-8, SeekOrigin.End);
             ulong data = readInt64(cheatStream);
-            data = data & 0xFE00000000000000;
+            data &= 0xFE00000000000000;
             if ((data != 0xF000000000000000) &&
                  (data != 0xFE00000000000000))
             {
@@ -1842,8 +1842,8 @@ namespace MusicRandomizer
 
             if (sheight > 600) //Progressive mode!
             {
-                sheight = sheight / 2;
-                swidth = swidth * 2;
+                sheight /= 2;
+                swidth *= 2;
             }
 
             Bitmap b = ProcessImage(swidth, sheight, analyze);
