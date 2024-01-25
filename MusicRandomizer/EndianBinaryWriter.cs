@@ -213,18 +213,18 @@ namespace System.IO
             WriteBuffer(size * count, size);
         }
 
-        public void Write(Single value)
+        public void Write(float value)
         {
-            const int size = sizeof(Single);
+            const int size = sizeof(float);
 
             CreateBuffer(size);
             Array.Copy(BitConverter.GetBytes(value), 0, buffer, 0, size);
             WriteBuffer(size, size);
         }
 
-        public void Write(Single[] value, int offset, int count)
+        public void Write(float[] value, int offset, int count)
         {
-            const int size = sizeof(Single);
+            const int size = sizeof(float);
 
             CreateBuffer(size * count);
             for (int i = 0; i < count; i++)
@@ -235,18 +235,18 @@ namespace System.IO
             WriteBuffer(size * count, size);
         }
 
-        public void Write(Int32 value)
+        public void Write(int value)
         {
-            const int size = sizeof(Int32);
+            const int size = sizeof(int);
 
             CreateBuffer(size);
             Array.Copy(BitConverter.GetBytes(value), 0, buffer, 0, size);
             WriteBuffer(size, size);
         }
 
-        public void Write(Int32[] value, int offset, int count)
+        public void Write(int[] value, int offset, int count)
         {
-            const int size = sizeof(Int32);
+            const int size = sizeof(int);
 
             CreateBuffer(size * count);
             for (int i = 0; i < count; i++)
@@ -257,18 +257,18 @@ namespace System.IO
             WriteBuffer(size * count, size);
         }
 
-        public void Write(Int64 value)
+        public void Write(long value)
         {
-            const int size = sizeof(Int64);
+            const int size = sizeof(long);
 
             CreateBuffer(size);
             Array.Copy(BitConverter.GetBytes(value), 0, buffer, 0, size);
             WriteBuffer(size, size);
         }
 
-        public void Write(Int64[] value, int offset, int count)
+        public void Write(long[] value, int offset, int count)
         {
-            const int size = sizeof(Int64);
+            const int size = sizeof(long);
 
             CreateBuffer(size * count);
             for (int i = 0; i < count; i++)
@@ -279,18 +279,18 @@ namespace System.IO
             WriteBuffer(size * count, size);
         }
 
-        public void Write(Int16 value)
+        public void Write(short value)
         {
-            const int size = sizeof(Int16);
+            const int size = sizeof(short);
 
             CreateBuffer(size);
             Array.Copy(BitConverter.GetBytes(value), 0, buffer, 0, size);
             WriteBuffer(size, size);
         }
 
-        public void Write(Int16[] value, int offset, int count)
+        public void Write(short[] value, int offset, int count)
         {
-            const int size = sizeof(Int16);
+            const int size = sizeof(short);
 
             CreateBuffer(size * count);
             for (int i = 0; i < count; i++)
@@ -301,18 +301,18 @@ namespace System.IO
             WriteBuffer(size * count, size);
         }
 
-        public void Write(UInt16 value)
+        public void Write(ushort value)
         {
-            const int size = sizeof(UInt16);
+            const int size = sizeof(ushort);
 
             CreateBuffer(size);
             Array.Copy(BitConverter.GetBytes(value), 0, buffer, 0, size);
             WriteBuffer(size, size);
         }
 
-        public void Write(UInt16[] value, int offset, int count)
+        public void Write(ushort[] value, int offset, int count)
         {
-            const int size = sizeof(UInt16);
+            const int size = sizeof(ushort);
 
             CreateBuffer(size * count);
             for (int i = 0; i < count; i++)
@@ -323,18 +323,18 @@ namespace System.IO
             WriteBuffer(size * count, size);
         }
 
-        public void Write(UInt32 value)
+        public void Write(uint value)
         {
-            const int size = sizeof(UInt32);
+            const int size = sizeof(uint);
 
             CreateBuffer(size);
             Array.Copy(BitConverter.GetBytes(value), 0, buffer, 0, size);
             WriteBuffer(size, size);
         }
 
-        public void Write(UInt32[] value, int offset, int count)
+        public void Write(uint[] value, int offset, int count)
         {
-            const int size = sizeof(UInt32);
+            const int size = sizeof(uint);
 
             CreateBuffer(size * count);
             for (int i = 0; i < count; i++)
@@ -345,18 +345,18 @@ namespace System.IO
             WriteBuffer(size * count, size);
         }
 
-        public void Write(UInt64 value)
+        public void Write(ulong value)
         {
-            const int size = sizeof(UInt64);
+            const int size = sizeof(ulong);
 
             CreateBuffer(size);
             Array.Copy(BitConverter.GetBytes(value), 0, buffer, 0, size);
             WriteBuffer(size, size);
         }
 
-        public void Write(UInt64[] value, int offset, int count)
+        public void Write(ulong[] value, int offset, int count)
         {
-            const int size = sizeof(UInt64);
+            const int size = sizeof(ulong);
 
             CreateBuffer(size * count);
             for (int i = 0; i < count; i++)
@@ -458,11 +458,11 @@ namespace System.IO
 
                                     attrs = (MarshalAsAttribute[])item.GetCustomAttributes(typeof(MarshalAsAttribute), false);
                                     if (attrs.Length != 1)
-                                        throw new ArgumentException(String.Format("Field `{0}' is an array without a MarshalAs attribute.", item.Name), "type");
+                                        throw new ArgumentException(string.Format("Field `{0}' is an array without a MarshalAs attribute.", item.Name), "type");
 
                                     attr = attrs[0];
                                     if (attr.Value != UnmanagedType.ByValArray)
-                                        throw new ArgumentException(String.Format("Field `{0}' is not a ByValArray.", item.Name), "type");
+                                        throw new ArgumentException(string.Format("Field `{0}' is not a ByValArray.", item.Name), "type");
 
                                     elementType = item.FieldType.GetElementType();
                                     switch (Type.GetTypeCode(elementType))

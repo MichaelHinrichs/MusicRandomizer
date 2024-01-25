@@ -97,7 +97,7 @@ namespace MusicRandomizer
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            String path = txtFilePath.Text;
+            string path = txtFilePath.Text;
             if (!File.Exists(path))
             {
                 MessageBox.Show("The file does not exist.");
@@ -218,7 +218,7 @@ namespace MusicRandomizer
 
             if (file == null)
             {
-                String newPath = Path.Combine("tracks", Path.GetFileName(path));
+                string newPath = Path.Combine("tracks", Path.GetFileName(path));
                 File.Delete(newPath);
                 File.Copy(path, newPath);
 

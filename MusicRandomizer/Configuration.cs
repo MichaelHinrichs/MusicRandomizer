@@ -7,9 +7,9 @@ namespace MusicRandomizer
     [Serializable]
     public class Configuration
     {
-        public String currentVersion;
+        public string currentVersion;
         public SplatoonRegion region;
-        public String currentPlaylist;
+        public string currentPlaylist;
 
         private static XmlSerializer serializer = new XmlSerializer(typeof(Configuration));
         public static Configuration currentConfig;

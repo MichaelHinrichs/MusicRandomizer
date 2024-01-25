@@ -20,11 +20,11 @@ namespace MusicRandomizer
         {
             lstPlaylists.Items.Clear();
 
-            String[] playlists = Directory.GetFiles("playlists");
-            foreach (String playlist in playlists)
+            string[] playlists = Directory.GetFiles("playlists");
+            foreach (string playlist in playlists)
             {
-                String playlistFilename = playlist.Substring(10, playlist.Length - 10); // strip "playlists\"
-                String playlistName = playlistFilename.Substring(0, playlistFilename.Length - 4); // strip ".xml"
+                string playlistFilename = playlist.Substring(10, playlist.Length - 10); // strip "playlists\"
+                string playlistName = playlistFilename.Substring(0, playlistFilename.Length - 4); // strip ".xml"
                 lstPlaylists.Items.Add(playlistName);
             }
 
@@ -49,7 +49,7 @@ namespace MusicRandomizer
 
         private void btnSwapTo_Click(object sender, EventArgs e)
         {
-            String selectedPlaylist = (String)lstPlaylists.SelectedItem;
+            string selectedPlaylist = (string)lstPlaylists.SelectedItem;
 
             if (selectedPlaylist == null)
             {
@@ -65,7 +65,7 @@ namespace MusicRandomizer
 
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String oldName = (String)lstPlaylists.SelectedItem;
+            string oldName = (string)lstPlaylists.SelectedItem;
 
             PlaylistNameForm playlistNameForm = new PlaylistNameForm(oldName);
             playlistNameForm.ShowDialog();
@@ -89,7 +89,7 @@ namespace MusicRandomizer
 
         private void duplicateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String toDuplicate = (String)lstPlaylists.SelectedItem;
+            string toDuplicate = (string)lstPlaylists.SelectedItem;
 
             PlaylistNameForm playlistNameForm = new PlaylistNameForm(toDuplicate + " (Copy)");
             playlistNameForm.ShowDialog();
@@ -106,7 +106,7 @@ namespace MusicRandomizer
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            String selectedPlaylist = (String)lstPlaylists.SelectedItem;
+            string selectedPlaylist = (string)lstPlaylists.SelectedItem;
 
             // Check if the playlist we are about to delete is the current one
             if (Configuration.currentConfig.currentPlaylist.Equals(selectedPlaylist))

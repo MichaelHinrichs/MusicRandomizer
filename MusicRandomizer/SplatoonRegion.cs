@@ -11,7 +11,7 @@ namespace MusicRandomizer
 
     public class SplatoonRegionTools
     {
-        public static String toTitleId(SplatoonRegion region)
+        public static string toTitleId(SplatoonRegion region)
         {
             switch (region)
             {
@@ -26,7 +26,7 @@ namespace MusicRandomizer
             }
         }
 
-        public static String toShortName(SplatoonRegion region)
+        public static string toShortName(SplatoonRegion region)
         {
             switch (region)
             {

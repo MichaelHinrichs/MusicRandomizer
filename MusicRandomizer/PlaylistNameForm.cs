@@ -7,15 +7,15 @@ namespace MusicRandomizer
 {
     public partial class PlaylistNameForm : Form
     {
-        public String name;
-        private Boolean pressedSave = false;
+        public string name;
+        private bool pressedSave = false;
 
         public PlaylistNameForm()
         {
             InitializeComponent();
         }
 
-        public PlaylistNameForm(String defaultName)
+        public PlaylistNameForm(string defaultName)
         {
             InitializeComponent();
 

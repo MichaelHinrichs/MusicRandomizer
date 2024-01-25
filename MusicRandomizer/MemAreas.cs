@@ -14,16 +14,16 @@ namespace MusicRandomizer
     public class AddressRange
     {
         private AddressType PDesc;
-        private Byte PId;
-        private UInt32 PLow;
-        private UInt32 PHigh;
+        private byte PId;
+        private uint PLow;
+        private uint PHigh;
 
         public AddressType description { get { return PDesc; } }
-        public Byte id { get { return PId; } }
-        public UInt32 low { get { return PLow; } }
-        public UInt32 high { get { return PHigh; } }
+        public byte id { get { return PId; } }
+        public uint low { get { return PLow; } }
+        public uint high { get { return PHigh; } }
 
-        public AddressRange(AddressType desc, Byte id, UInt32 low, UInt32 high)
+        public AddressRange(AddressType desc, byte id, uint low, uint high)
         {
             this.PId = id;
             this.PDesc = desc;
@@ -31,8 +31,8 @@ namespace MusicRandomizer
             this.PHigh = high;
         }
 
-        public AddressRange(AddressType desc, UInt32 low, UInt32 high) :
-            this(desc, (Byte)(low >> 24), low, high)
+        public AddressRange(AddressType desc, uint low, uint high) :
+            this(desc, (byte)(low >> 24), low, high)
         { }
     }
 
@@ -53,7 +53,7 @@ namespace MusicRandomizer
              new AddressRange(AddressType.Rw,  0xfffe0000,0xffffffff)
         };
 
-        public static AddressType rangeCheck(UInt32 address)
+        public static AddressType rangeCheck(uint address)
         {
             int id = rangeCheckId(address);
             if (id == -1)
@@ -62,7 +62,7 @@ namespace MusicRandomizer
                 return ValidAreas[id].description;
         }
 
-        public static int rangeCheckId(UInt32 address)
+        public static int rangeCheckId(uint address)
         {
             for (int i = 0; i < ValidAreas.Length; i++)
             {
@@ -73,33 +73,33 @@ namespace MusicRandomizer
             return -1;
         }
 
-        public static bool validAddress(UInt32 address, bool debug)
+        public static bool validAddress(uint address, bool debug)
         {
             if (debug)
                 return true;
             return (rangeCheckId(address) >= 0);
         }
 
-        public static bool validAddress(UInt32 address)
+        public static bool validAddress(uint address)
         {
             return validAddress(address, addressDebug);
         }
 
-        public static bool validRange(UInt32 low, UInt32 high, bool debug)
+        public static bool validRange(uint low, uint high, bool debug)
         {
             if (debug)
                 return true;
             return (rangeCheckId(low) == rangeCheckId(high - 1));
         }
 
-        public static bool validRange(UInt32 low, UInt32 high)
+        public static bool validRange(uint low, uint high)
         {
             return validRange(low, high, addressDebug);
         }
 
         public static void setDataUpper(TCPGecko upper)
         {
-            UInt32 mem;
+            uint mem;
             switch (upper.OsVersionRequest())
             {
                 case 400:
@@ -115,15 +115,15 @@ namespace MusicRandomizer
                 default:
                     return;
             }
-            UInt32 tbl = upper.peek_kern(mem + 4);
-            UInt32 lst = upper.peek_kern(tbl + 20);
+            uint tbl = upper.peek_kern(mem + 4);
+            uint lst = upper.peek_kern(tbl + 20);
 
-            UInt32 init_start = upper.peek_kern(lst + 0 + 0x00);
-            UInt32 init_len = upper.peek_kern(lst + 4 + 0x00);
-            UInt32 code_start = upper.peek_kern(lst + 0 + 0x10);
-            UInt32 code_len = upper.peek_kern(lst + 4 + 0x10);
-            UInt32 data_start = upper.peek_kern(lst + 0 + 0x20);
-            UInt32 data_len = upper.peek_kern(lst + 4 + 0x20);
+            uint init_start = upper.peek_kern(lst + 0 + 0x00);
+            uint init_len = upper.peek_kern(lst + 4 + 0x00);
+            uint code_start = upper.peek_kern(lst + 0 + 0x10);
+            uint code_len = upper.peek_kern(lst + 4 + 0x10);
+            uint data_start = upper.peek_kern(lst + 0 + 0x20);
+            uint data_len = upper.peek_kern(lst + 4 + 0x20);
             ValidAreas[0] = new AddressRange(AddressType.Ex, init_start, init_start + init_len);
             ValidAreas[1] = new AddressRange(AddressType.Ex, code_start, code_start + code_len);
             ValidAreas[2] = new AddressRange(AddressType.Rw, data_start, data_start + data_len);

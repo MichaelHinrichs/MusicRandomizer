@@ -27,7 +27,7 @@ namespace MusicRandomizer
 
     public static class TrackTypeUtils
     {
-        public static String ToUIString(this TrackType type)
+        public static string ToUIString(this TrackType type)
         {
             switch (type) {
                 case TrackType.VSLobby:
@@ -69,7 +69,7 @@ namespace MusicRandomizer
             }
         }
 
-        public static TrackType FileNameToTrackType(String fileName)
+        public static TrackType FileNameToTrackType(string fileName)
         {
             // we use StartsWith because there's a track in the Plaza with VS in the name
             // we also leave out the "S" because for StartDemo it is lowercase *headdesk*

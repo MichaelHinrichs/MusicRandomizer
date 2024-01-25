@@ -9,8 +9,8 @@ namespace MusicRandomizer
 {
     public class UpdateInfo
     {
-        public String latestVersion;
-        public String changes;
+        public string latestVersion;
+        public string changes;
     }
 
     class UpdateChecker
@@ -40,12 +40,12 @@ namespace MusicRandomizer
 
         public static void ConvertIfNeeded()
         {
-            String changelist = "";
+            string changelist = "";
 
             if (Directory.Exists("other_files"))
             {
-                String titleId = SplatoonRegionTools.toTitleId(Configuration.currentConfig.region);
-                String shortName = SplatoonRegionTools.toShortName(Configuration.currentConfig.region);
+                string titleId = SplatoonRegionTools.toTitleId(Configuration.currentConfig.region);
+                string shortName = SplatoonRegionTools.toShortName(Configuration.currentConfig.region);
                 
                 // Don't continue if the destination directory already exists
                 if (!Directory.Exists("cafiine_root\\" + titleId))
@@ -76,7 +76,7 @@ namespace MusicRandomizer
             }
         }
 
-        public static String StripDot(String input)
+        public static string StripDot(string input)
         {
             StringBuilder builder = new StringBuilder(input.Length);
 

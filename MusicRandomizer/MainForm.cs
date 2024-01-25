@@ -57,7 +57,7 @@ namespace MusicRandomizer
         {
         }
 
-        public void SwitchPlaylist(String newPlaylist)
+        public void SwitchPlaylist(string newPlaylist)
         {
             Configuration.currentConfig.currentPlaylist = newPlaylist;
             Configuration.Save();
@@ -101,7 +101,7 @@ namespace MusicRandomizer
                     continue;
                 }
 
-                String types = "";
+                string types = "";
                 foreach (TrackType type in file.types)
                 {
                     fileTrackers[(int)type].files.Add(file);
@@ -110,8 +110,8 @@ namespace MusicRandomizer
                 }
 
                 types = types.Substring(0, types.Length - 2);
-                String name = Path.GetFileName(file.path);
-                lsvTracks.Items.Add(new ListViewItem(new String[] { name.Substring(0, name.Length - 6), types }));
+                string name = Path.GetFileName(file.path);
+                lsvTracks.Items.Add(new ListViewItem(new string[] { name.Substring(0, name.Length - 6), types }));
             }
 
             SavePlaylist();
@@ -126,7 +126,7 @@ namespace MusicRandomizer
             }
         }
 
-        public MusicFile GetFile(String strippedPath)
+        public MusicFile GetFile(string strippedPath)
         {
             TrackType trackType = TrackTypeUtils.FileNameToTrackType(Path.GetFileName(strippedPath));
             if (trackType == TrackType.Unknown)
@@ -153,7 +153,7 @@ namespace MusicRandomizer
             return musicFile;
         }
 
-        public void Log(LogType type, String str)
+        public void Log(LogType type, string str)
         {
             cafiineWorker.ReportProgress((int) type, str);
         }
@@ -173,7 +173,7 @@ namespace MusicRandomizer
 
         private void cafiineWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            String message = e.UserState.ToString();
+            string message = e.UserState.ToString();
             LogType type = (LogType)e.ProgressPercentage;
 
             switch (type)
@@ -196,15 +196,15 @@ namespace MusicRandomizer
 
         private void updateWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            String version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            string version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             UpdateInfo updateInfo = UpdateChecker.CheckForUpdate();
 
-            int numberVersion = Int32.Parse(UpdateChecker.StripDot(version));
-            int updateVersion = Int32.Parse(UpdateChecker.StripDot(updateInfo.latestVersion));
+            int numberVersion = int.Parse(UpdateChecker.StripDot(version));
+            int updateVersion = int.Parse(UpdateChecker.StripDot(updateInfo.latestVersion));
 
             if (updateVersion > numberVersion)
             {
-                String dialogString = "Version " + updateInfo.latestVersion + " is now available for MusicRandomizer with the following changes:\n\n" + updateInfo.changes;
+                string dialogString = "Version " + updateInfo.latestVersion + " is now available for MusicRandomizer with the following changes:\n\n" + updateInfo.changes;
                 dialogString += "\n\nWould you like to download the latest update from GitHub now?";
 
                 DialogResult result = MessageBox.Show(dialogString, "Update available", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
@@ -216,7 +216,7 @@ namespace MusicRandomizer
             }
             else
             {
-                if ((Boolean)e.Argument)
+                if ((bool)e.Argument)
                 {
                     MessageBox.Show("There is no update available right now.", "No update available", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -324,7 +324,7 @@ namespace MusicRandomizer
             String version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
             MessageBox.Show("MusicRandomizer (" + version + ")\nCopyright (c) 2016 OatmealDome");
 #else
-            String version = "1.0.2.0";
+            string version = "1.0.2.0";
             MessageBox.Show("MusicRandomizer (" + version + ")\nCopyright (c) 2016 OatmealDome\n\nPre-release version, please update when the final build is out");
 #endif
         }

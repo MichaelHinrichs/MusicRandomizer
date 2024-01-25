@@ -143,10 +143,10 @@ namespace MusicRandomizer
                                     if (reader.ReadByte() != 0) throw new InvalidDataException();
 
                                     //Log(LogType.Info, name + " " + path);
-                                    String localPath = "cafiine_root\\" + titleId + path;
+                                    string localPath = "cafiine_root\\" + titleId + path;
                                     if (isSplatoon && path.Contains(".bfstm"))
                                     {
-                                        String strippedPath = Path.GetFileName(path);
+                                        string strippedPath = Path.GetFileName(path);
                                         strippedPath = strippedPath.Substring(0, strippedPath.Length - 6); // get rid of ".bfstm"
 
                                         MusicFile musicFile = mainForm.GetFile(strippedPath);
@@ -420,7 +420,7 @@ namespace MusicRandomizer
             Log(LogType.Info, name + " Connection closed.");
         }
 
-        private void Log(LogType type, String message)
+        private void Log(LogType type, string message)
         {
             mainForm.Log(type, message);
         }

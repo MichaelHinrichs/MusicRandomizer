@@ -235,19 +235,19 @@ namespace System.IO
             return temp;
         }
 
-        public Single ReadSingle()
+        public float ReadSingle()
         {
-            const int size = sizeof(Single);
+            const int size = sizeof(float);
             FillBuffer(size, size);
             return BitConverter.ToSingle(buffer, 0);
         }
 
-        public Single[] ReadSingles(int count)
+        public float[] ReadSingles(int count)
         {
-            const int size = sizeof(Single);
-            Single[] temp;
+            const int size = sizeof(float);
+            float[] temp;
 
-            temp = new Single[count];
+            temp = new float[count];
             FillBuffer(size * count, size);
 
             for (int i = 0; i < count; i++)
@@ -257,19 +257,19 @@ namespace System.IO
             return temp;
         }
 
-        public Int32 ReadInt32()
+        public int ReadInt32()
         {
-            const int size = sizeof(Int32);
+            const int size = sizeof(int);
             FillBuffer(size, size);
             return BitConverter.ToInt32(buffer, 0);
         }
 
-        public Int32[] ReadInt32s(int count)
+        public int[] ReadInt32s(int count)
         {
-            const int size = sizeof(Int32);
-            Int32[] temp;
+            const int size = sizeof(int);
+            int[] temp;
 
-            temp = new Int32[count];
+            temp = new int[count];
             FillBuffer(size * count, size);
 
             for (int i = 0; i < count; i++)
@@ -279,19 +279,19 @@ namespace System.IO
             return temp;
         }
 
-        public Int64 ReadInt64()
+        public long ReadInt64()
         {
-            const int size = sizeof(Int64);
+            const int size = sizeof(long);
             FillBuffer(size, size);
             return BitConverter.ToInt64(buffer, 0);
         }
 
-        public Int64[] ReadInt64s(int count)
+        public long[] ReadInt64s(int count)
         {
-            const int size = sizeof(Int64);
-            Int64[] temp;
+            const int size = sizeof(long);
+            long[] temp;
 
-            temp = new Int64[count];
+            temp = new long[count];
             FillBuffer(size * count, size);
 
             for (int i = 0; i < count; i++)
@@ -301,19 +301,19 @@ namespace System.IO
             return temp;
         }
 
-        public Int16 ReadInt16()
+        public short ReadInt16()
         {
-            const int size = sizeof(Int16);
+            const int size = sizeof(short);
             FillBuffer(size, size);
             return BitConverter.ToInt16(buffer, 0);
         }
 
-        public Int16[] ReadInt16s(int count)
+        public short[] ReadInt16s(int count)
         {
-            const int size = sizeof(Int16);
-            Int16[] temp;
+            const int size = sizeof(short);
+            short[] temp;
 
-            temp = new Int16[count];
+            temp = new short[count];
             FillBuffer(size * count, size);
 
             for (int i = 0; i < count; i++)
@@ -323,19 +323,19 @@ namespace System.IO
             return temp;
         }
 
-        public UInt16 ReadUInt16()
+        public ushort ReadUInt16()
         {
-            const int size = sizeof(UInt16);
+            const int size = sizeof(ushort);
             FillBuffer(size, size);
             return BitConverter.ToUInt16(buffer, 0);
         }
 
-        public UInt16[] ReadUInt16s(int count)
+        public ushort[] ReadUInt16s(int count)
         {
-            const int size = sizeof(UInt16);
-            UInt16[] temp;
+            const int size = sizeof(ushort);
+            ushort[] temp;
 
-            temp = new UInt16[count];
+            temp = new ushort[count];
             FillBuffer(size * count, size);
 
             for (int i = 0; i < count; i++)
@@ -345,19 +345,19 @@ namespace System.IO
             return temp;
         }
 
-        public UInt32 ReadUInt32()
+        public uint ReadUInt32()
         {
-            const int size = sizeof(UInt32);
+            const int size = sizeof(uint);
             FillBuffer(size, size);
             return BitConverter.ToUInt32(buffer, 0);
         }
 
-        public UInt32[] ReadUInt32s(int count)
+        public uint[] ReadUInt32s(int count)
         {
-            const int size = sizeof(UInt32);
-            UInt32[] temp;
+            const int size = sizeof(uint);
+            uint[] temp;
 
-            temp = new UInt32[count];
+            temp = new uint[count];
             FillBuffer(size * count, size);
 
             for (int i = 0; i < count; i++)
@@ -367,19 +367,19 @@ namespace System.IO
             return temp;
         }
 
-        public UInt64 ReadUInt64()
+        public ulong ReadUInt64()
         {
-            const int size = sizeof(UInt64);
+            const int size = sizeof(ulong);
             FillBuffer(size, size);
             return BitConverter.ToUInt64(buffer, 0);
         }
 
-        public UInt64[] ReadUInt64s(int count)
+        public ulong[] ReadUInt64s(int count)
         {
-            const int size = sizeof(UInt64);
-            UInt64[] temp;
+            const int size = sizeof(ulong);
+            ulong[] temp;
 
-            temp = new UInt64[count];
+            temp = new ulong[count];
             FillBuffer(size * count, size);
 
             for (int i = 0; i < count; i++)
@@ -455,11 +455,11 @@ namespace System.IO
 
                                     attrs = (MarshalAsAttribute[])item.GetCustomAttributes(typeof(MarshalAsAttribute), false);
                                     if (attrs.Length != 1)
-                                        throw new ArgumentException(String.Format("Field `{0}' is an array without a MarshalAs attribute.", item.Name), "type");
+                                        throw new ArgumentException(string.Format("Field `{0}' is an array without a MarshalAs attribute.", item.Name), "type");
 
                                     attr = attrs[0];
                                     if (attr.Value != UnmanagedType.ByValArray)
-                                        throw new ArgumentException(String.Format("Field `{0}' is not a ByValArray.", item.Name), "type");
+                                        throw new ArgumentException(string.Format("Field `{0}' is not a ByValArray.", item.Name), "type");
 
                                     elementType = item.FieldType.GetElementType();
                                     switch (Type.GetTypeCode(elementType))

@@ -8,18 +8,18 @@ namespace MusicRandomizer
     [Serializable]
     public class MusicFile
     {
-        public String path
+        public string path
         {
             get;
             set;
         }
 
         [XmlIgnore]
-        public String fileName
+        public string fileName
         {
             get
             {
-                String name = Path.GetFileName(path);
+                string name = Path.GetFileName(path);
                 return name.Substring(0, name.Length - 6);
             }
             private set
